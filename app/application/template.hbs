@@ -1,0 +1,11 @@
+<h2 id="title">Pizza Party</h2>
+
+{{team-creator createTeam=(route-action "createTeam")}}
+
+<ul>
+{{#each model.teams as |team|}}
+{{team-listing team=team deleteTeam=(route-action "deleteTeam")}}
+{{/each}}
+</ul>
+
+{{outlet}}

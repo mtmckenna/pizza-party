@@ -4,8 +4,11 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pizza-party',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: '',
     baseURL: '/',
     locationType: 'auto',
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -31,6 +34,7 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
+    ENV.firebase = '';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;

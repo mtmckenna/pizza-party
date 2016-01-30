@@ -1,0 +1,8 @@
+{{yield}}
+
+<div class="form-inline">
+  <form>
+    {{input class='js-create-team-input' placeholder='Team name' value=name}}
+    <button class='js-create-team-button' {{action 'createTeam'}} >Add team</button>
+  </form>
+</div>
