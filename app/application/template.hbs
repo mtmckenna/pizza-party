@@ -5,13 +5,17 @@
 
 <ul>
 {{#each model.engineers as |engineer|}}
-{{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
+  {{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
 {{/each}}
 </ul>
 
+<hr>
+
 <ul>
 {{#each model.teams as |team|}}
-{{team-listing team=team deleteTeam=(route-action "deleteTeam") moveEngineer=(route-action "moveEngineer")}}
+  {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
+                            moveEngineer=(route-action "moveEngineer")
+                            deleteEngineer=(route-action "deleteEngineer")}}
 {{/each}}
 </ul>
 

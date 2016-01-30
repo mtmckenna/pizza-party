@@ -38,3 +38,55 @@ test('can create and delete teams and engineers', function(assert) {
     });
   });
 });
+
+test('can move engineers between teams', function(assert) {
+  server.createList('engineer', 2);
+  server.createList('team', 2);
+  var engineer1 = server.db.engineers[0];
+  var engineer2 = server.db.engineers[1];
+
+  var FakeDataTransfer = function(data) {
+    return {
+      data: data,
+      getData: function() {
+        return this.data;
+      },
+      setData: function(data) {
+        this.data = data;
+      }
+    };
+  };
+
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+    assert.equal(find('.js-team').length, 2);
+    assert.equal(find('.js-engineer').length, 2);
+
+    var team1 = $('.js-team')[0];
+    var team2 = $('.js-team')[1];
+
+    var dataTransfer1 = new FakeDataTransfer(engineer1.id);
+    var dataTransfer2 = new FakeDataTransfer(engineer2.id);
+
+    triggerEvent(team1, 'drop', {dataTransfer: dataTransfer1});
+    triggerEvent(team2, 'drop', {dataTransfer: dataTransfer2});
+
+    andThen(function() {
+      var engineersOnFirstTeam = $(team1).text().trim();
+      var engineersOnSecondTeam = $(team2).text().trim();
+      assert.equal( engineersOnFirstTeam.indexOf(engineer1.name) > -1, true);
+      assert.equal( engineersOnSecondTeam.indexOf(engineer2.name) > -1, true);
+
+      var dataTransfer3 = new FakeDataTransfer(engineer1.id);
+      triggerEvent(team2, 'drop', {dataTransfer: dataTransfer3});
+
+      andThen(function() {
+        var engineersOnSecondTeam = $(team2).text().trim();
+        assert.equal( engineersOnSecondTeam.indexOf(engineer1.name) > -1, true);
+        assert.equal( engineersOnSecondTeam.indexOf(engineer2.name) > -1, true);
+      });
+    });
+  });
+});

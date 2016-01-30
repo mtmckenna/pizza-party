@@ -21,6 +21,7 @@ export default Ember.Route.extend({
     moveEngineer(engineerId, team) {
       var engineer = this.store.peekRecord('engineer', engineerId);
       engineer.set('team', team);
+      engineer.save();
     },
 
     createTeam(name) {

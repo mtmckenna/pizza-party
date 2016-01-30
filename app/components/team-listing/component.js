@@ -15,6 +15,10 @@ export default Ember.Component.extend({
   actions: {
     deleteTeam: function() {
       this.attrs.deleteTeam(this.get('team'));
+    },
+
+    deleteEngineer: function(engineer) {
+      this.attrs.deleteEngineer(engineer);
     }
   }
 });
