@@ -18,6 +18,11 @@ export default Ember.Route.extend({
       engineer.destroyRecord();
     },
 
+    moveEngineer(engineerId, team) {
+      var engineer = this.store.peekRecord('engineer', engineerId);
+      engineer.set('team', team);
+    },
+
     createTeam(name) {
       var newTeam = this.store.createRecord('team', { name: name });
       newTeam.save();

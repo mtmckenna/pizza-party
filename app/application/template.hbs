@@ -11,7 +11,7 @@
 
 <ul>
 {{#each model.teams as |team|}}
-{{team-listing team=team deleteTeam=(route-action "deleteTeam")}}
+{{team-listing team=team deleteTeam=(route-action "deleteTeam") moveEngineer=(route-action "moveEngineer")}}
 {{/each}}
 </ul>
 
