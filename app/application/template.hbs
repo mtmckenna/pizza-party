@@ -1,6 +1,13 @@
 <h2 id="title">Pizza Party</h2>
 
+{{engineer-creator createEngineer=(route-action "createEngineer")}}
 {{team-creator createTeam=(route-action "createTeam")}}
+
+<ul>
+{{#each model.engineers as |engineer|}}
+{{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
+{{/each}}
+</ul>
 
 <ul>
 {{#each model.teams as |team|}}

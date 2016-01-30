@@ -4,6 +4,8 @@ export default function() {
   this.post('/teams', {data: []});
   this.delete('/teams', {data: []});
   this.get('/engineers', {data: []});
+  this.post('/engineers', {data: []});
+  this.delete('/engineers', {data: []});
 
   // These comments are here to help you get started. Feel free to delete them.
 
