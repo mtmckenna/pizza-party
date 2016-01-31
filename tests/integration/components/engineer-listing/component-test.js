@@ -10,5 +10,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{engineer-listing engineer=engineer}}`);
 
-  assert.equal(this.$().text().trim(), 'x Zevon');
+  assert.equal(this.$().text().trim().indexOf('Zevon') > -1, true);
 });

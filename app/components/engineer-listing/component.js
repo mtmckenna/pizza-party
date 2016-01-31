@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['js-engineer'],
+  classNames: ['js-engineer', 'engineer-listing'],
   attributeBindings: ['draggable'],
   draggable : 'true',
 

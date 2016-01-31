@@ -1,6 +1,6 @@
-<li>
-  <span class='js-delete-team' {{action 'deleteTeam'}}>x</span> {{team.name}}
-  <ul>
+<li class="team-listing-li">
+  <div class="team-name"><button class='js-delete-team button__x' {{action 'deleteTeam'}}>&#215;</button> <span class="title">{{team.name}}</span></div>
+  <ul class="engineer-list">
   {{#each team.engineers as |engineer|}}
     {{engineer-listing engineer=engineer deleteEngineer=(action 'deleteEngineer' engineer)}}
   {{/each}}

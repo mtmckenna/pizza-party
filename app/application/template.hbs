@@ -1,22 +1,25 @@
-<h2 id="title">Pizza Party</h2>
+<h2 class="title">Pizza Party</h2>
 
-{{engineer-creator createEngineer=(route-action "createEngineer")}}
-{{team-creator createTeam=(route-action "createTeam")}}
+<div class="creator-forms">
+  {{engineer-creator createEngineer=(route-action "createEngineer")}}
+  {{team-creator createTeam=(route-action "createTeam")}}
+</div>
 
-<ul class="js-unassigned-engineers">
-{{#each unassignedEngineers as |engineer|}}
-  {{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
-{{/each}}
+<h3 class="title">Free Agentz</h3>
+
+<ul class="js-unassigned-engineers unassigned-engineer-list team-listing">
+  {{#each unassignedEngineers as |engineer|}}
+    {{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
+  {{/each}}
 </ul>
 
-<hr>
-
-<ul>
-{{#each model.teams as |team|}}
-  {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
-                            moveEngineer=(route-action "moveEngineer")
-                            deleteEngineer=(route-action "deleteEngineer")}}
-{{/each}}
+<h3 class="title">Teamz</h3>
+<ul class="team-list">
+  {{#each model.teams as |team|}}
+    {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
+                              moveEngineer=(route-action "moveEngineer")
+                              deleteEngineer=(route-action "deleteEngineer")}}
+  {{/each}}
 </ul>
 
 {{outlet}}

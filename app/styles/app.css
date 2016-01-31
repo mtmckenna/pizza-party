@@ -1,3 +1,113 @@
 [data-ember-action] {
   cursor: pointer;
 }
+
+body {
+  background-color: #ffffcc;
+  font-family: "Times New Roman", Georgia, Serif;
+  color: #000;
+}
+
+.title {
+  text-align: center;
+  color: #996633;
+  font-weight: normal;
+}
+
+.button {
+  font-family: "Times New Roman", Georgia, Serif;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button__x {
+  font-family: "Times New Roman", Georgia, Serif;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 1px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background-color: #cc3300;
+}
+
+.button__green {
+  background-color: #4CAF50;
+}
+
+.input {
+  font-family: "Times New Roman", Georgia, Serif;
+  border-radius: 5px;
+  padding: 2px;
+  height: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  border: solid 1px #4CAF50;
+  display: inline-block;
+}
+
+.creator-forms {
+  text-align: center;
+}
+
+.creator-input-fields {
+  margin: 0 20px 0 5px;
+  display: inline-block;
+}
+
+.team-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.team-listing {
+  margin: 5px 5px 5px 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: solid 1px #4CAF50;
+  display: inline-block;
+  vertical-align: top;
+  min-height: 150px;
+  min-width: 150px;
+  padding: 5px;
+}
+
+.team-lists {
+  text-align: center;
+}
+
+.team-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.unassignedengineer-list {
+  padding: 5px;
+}
+
+.engineer-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.team-listing-li {
+  display: inline;
+}
+
+.engineer-listing {
+  margin-top: 5px;
+}
+
+.engineer-listing-li {
+  list-style-type: none;
+  padding: 0;
+}

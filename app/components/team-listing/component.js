@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['js-team'],
+  classNames: ['js-team', 'team-listing'],
 
   drop(event) {
     var data = event.dataTransfer.getData('text/data');
