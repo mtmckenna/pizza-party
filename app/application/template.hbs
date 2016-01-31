@@ -3,8 +3,8 @@
 {{engineer-creator createEngineer=(route-action "createEngineer")}}
 {{team-creator createTeam=(route-action "createTeam")}}
 
-<ul>
-{{#each model.engineers as |engineer|}}
+<ul class="js-unassigned-engineers">
+{{#each unassignedEngineers as |engineer|}}
   {{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
 {{/each}}
 </ul>

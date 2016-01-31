@@ -63,6 +63,10 @@ test('can move engineers between teams', function(assert) {
     assert.equal(currentURL(), '/');
     assert.equal(find('.js-team').length, 2);
     assert.equal(find('.js-engineer').length, 2);
+    var unassignedEngineers = $('.js-unassigned-engineers').text().trim();
+
+    assert.equal(unassignedEngineers.indexOf(engineer1.name) > -1, true);
+    assert.equal(unassignedEngineers.indexOf(engineer2.name) > -1, true);
 
     var team1 = $('.js-team')[0];
     var team2 = $('.js-team')[1];
@@ -70,22 +74,39 @@ test('can move engineers between teams', function(assert) {
     var dataTransfer1 = new FakeDataTransfer(engineer1.id);
     var dataTransfer2 = new FakeDataTransfer(engineer2.id);
 
+    // Move engineer1 to team1
     triggerEvent(team1, 'drop', {dataTransfer: dataTransfer1});
+
+    // Move engineer2 to team2
     triggerEvent(team2, 'drop', {dataTransfer: dataTransfer2});
 
     andThen(function() {
       var engineersOnFirstTeam = $(team1).text().trim();
       var engineersOnSecondTeam = $(team2).text().trim();
-      assert.equal( engineersOnFirstTeam.indexOf(engineer1.name) > -1, true);
-      assert.equal( engineersOnSecondTeam.indexOf(engineer2.name) > -1, true);
+      unassignedEngineers = $('.js-unassigned-engineers').text().trim();
+
+      // Engineer1 is on team1
+      assert.equal(engineersOnFirstTeam.indexOf(engineer1.name) > -1, true);
+
+      // Engineer2 is on team2
+      assert.equal(engineersOnSecondTeam.indexOf(engineer2.name) > -1, true);
 
       var dataTransfer3 = new FakeDataTransfer(engineer1.id);
       triggerEvent(team2, 'drop', {dataTransfer: dataTransfer3});
 
+      // Neither engineer is unassigned
+      assert.equal(unassignedEngineers.indexOf(engineer1.name) > -1, false);
+      assert.equal(unassignedEngineers.indexOf(engineer2.name) > -1, false);
+
       andThen(function() {
+        var engineersOnFirstTeam = $(team1).text().trim();
+
+        // Engineer1 is not on team1
+        assert.equal(engineersOnFirstTeam.indexOf(engineer1.name) > -1, false);
+
         var engineersOnSecondTeam = $(team2).text().trim();
-        assert.equal( engineersOnSecondTeam.indexOf(engineer1.name) > -1, true);
-        assert.equal( engineersOnSecondTeam.indexOf(engineer2.name) > -1, true);
+        // Engineer1 is on team2
+        assert.equal(engineersOnSecondTeam.indexOf(engineer1.name) > -1, true);
       });
     });
   });
