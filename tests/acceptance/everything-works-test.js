@@ -61,15 +61,15 @@ test('can move engineers between teams', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/');
-    assert.equal(find('.js-team').length, 2);
+    assert.equal(find('.js-team').length, 3);
     assert.equal(find('.js-engineer').length, 2);
-    var unassignedEngineers = $('.js-unassigned-engineers').text().trim();
-
-    assert.equal(unassignedEngineers.indexOf(engineer1.name) > -1, true);
-    assert.equal(unassignedEngineers.indexOf(engineer2.name) > -1, true);
 
     var team1 = $('.js-team')[0];
     var team2 = $('.js-team')[1];
+    var freeAgents = $('.js-team').eq(2).text().trim();
+
+    assert.equal(freeAgents.indexOf(engineer1.name) > -1, true);
+    assert.equal(freeAgents.indexOf(engineer2.name) > -1, true);
 
     var dataTransfer1 = new FakeDataTransfer(engineer1.id);
     var dataTransfer2 = new FakeDataTransfer(engineer2.id);
@@ -83,7 +83,7 @@ test('can move engineers between teams', function(assert) {
     andThen(function() {
       var engineersOnFirstTeam = $(team1).text().trim();
       var engineersOnSecondTeam = $(team2).text().trim();
-      unassignedEngineers = $('.js-unassigned-engineers').text().trim();
+      freeAgents = $('.js-team').eq(2).text().trim();
 
       // Engineer1 is on team1
       assert.equal(engineersOnFirstTeam.indexOf(engineer1.name) > -1, true);
@@ -94,9 +94,9 @@ test('can move engineers between teams', function(assert) {
       var dataTransfer3 = new FakeDataTransfer(engineer1.id);
       triggerEvent(team2, 'drop', {dataTransfer: dataTransfer3});
 
-      // Neither engineer is unassigned
-      assert.equal(unassignedEngineers.indexOf(engineer1.name) > -1, false);
-      assert.equal(unassignedEngineers.indexOf(engineer2.name) > -1, false);
+      // Neither engineer is unassigned to a team
+      assert.equal(freeAgents.indexOf(engineer1.name) > -1, false);
+      assert.equal(freeAgents.indexOf(engineer2.name) > -1, false);
 
       andThen(function() {
         var engineersOnFirstTeam = $(team1).text().trim();
