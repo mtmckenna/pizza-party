@@ -8,7 +8,7 @@ test('can create and delete teams and engineers', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/');
-    assert.equal(find('.js-team').length, 0);
+    assert.equal(find('.js-team').length, 1);
     assert.equal(find('.js-engineer').length, 0);
 
     andThen(function() {
@@ -25,13 +25,13 @@ test('can create and delete teams and engineers', function(assert) {
       click(find('.js-create-engineer-button'));
 
       andThen(function() {
-        assert.equal(find('.js-team').length, 2);
+        assert.equal(find('.js-team').length, 3);
         assert.equal(find('.js-engineer').length, 2);
         click(find('.js-delete-team'));
         click(find('.js-delete-engineer'));
 
         andThen(function() {
-          assert.equal(find('.js-team').length, 0);
+          assert.equal(find('.js-team').length, 1);
           assert.equal(find('.js-engineer').length, 0);
         });
       });
