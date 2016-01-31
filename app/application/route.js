@@ -30,6 +30,13 @@ export default Ember.Route.extend({
     },
 
     deleteTeam(team) {
+      team.get('engineers').then(function(engineers) {
+        engineers.forEach(function(engineer) {
+          engineer.set('team', null);
+          engineer.save();
+        });
+      });
+
       team.destroyRecord();
     }
   }
