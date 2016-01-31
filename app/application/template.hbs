@@ -7,11 +7,8 @@
 
 <h3 class="title">Free Agentz</h3>
 
-<ul class="js-unassigned-engineers unassigned-engineer-list team-listing">
-  {{#each unassignedEngineers as |engineer|}}
-    {{engineer-listing engineer=engineer deleteEngineer=(route-action "deleteEngineer")}}
-  {{/each}}
-</ul>
+{{team-listing team=freeAgents moveEngineer=(route-action "moveEngineer")
+                               deleteEngineer=(route-action "deleteEngineer")}}
 
 <h3 class="title">Teamz</h3>
 <ul class="team-list">
