@@ -1,7 +1,11 @@
 <li class="team-listing-li">
-  {{#if team.name}}
-    <div class="team-name"><button class='js-delete-team button__x' {{action 'deleteTeam'}}>&#215;</button> <span class="title">{{team.name}}</span></div>
-  {{/if}}
+  <div class="team-name">
+    {{#if team.name}}
+      <button class='js-delete-team button__x' {{action 'deleteTeam'}}>&#215;</button> <span class="title">{{team.name}}</span>
+    {{else}}
+      <span class="title">Free Agentz</span>
+    {{/if}}
+  </div>
   <ul class="engineer-list">
   {{#each team.engineers as |engineer|}}
     {{engineer-listing engineer=engineer deleteEngineer=(action 'deleteEngineer' engineer)}}

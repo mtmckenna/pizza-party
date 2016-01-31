@@ -5,12 +5,6 @@
   {{team-creator createTeam=(route-action "createTeam")}}
 </div>
 
-<h3 class="title">Free Agentz</h3>
-
-{{team-listing team=freeAgents moveEngineer=(route-action "moveEngineer")
-                               deleteEngineer=(route-action "deleteEngineer")}}
-
-<h3 class="title">Teamz</h3>
 <ul class="team-list">
   {{#each model.teams as |team|}}
     {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
@@ -19,4 +13,5 @@
   {{/each}}
 </ul>
 
-{{outlet}}
+{{team-listing team=freeAgents moveEngineer=(route-action "moveEngineer")
+                               deleteEngineer=(route-action "deleteEngineer")}}
