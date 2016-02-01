@@ -1,7 +1,5 @@
-<div class="creator-forms">
-  {{engineer-creator createEngineer=(route-action "createEngineer")}}
-  {{team-creator createTeam=(route-action "createTeam")}}
-</div>
+{{engineer-creator createEngineer=(route-action "createEngineer")}}
+{{team-creator createTeam=(route-action "createTeam")}}
 
 <ul class="team-list">
   {{#each model.teams as |team|}}

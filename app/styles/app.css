@@ -17,7 +17,6 @@ body {
 .button {
   font-family: "Times New Roman", Georgia, Serif;
   border: none;
-  border-radius: 5px;
   color: white;
   padding: 5px 10px;
   text-align: center;
@@ -29,7 +28,6 @@ body {
 .button__x {
   font-family: "Times New Roman", Georgia, Serif;
   border: none;
-  border-radius: 5px;
   color: white;
   padding: 1px 5px;
   text-align: center;
@@ -45,17 +43,11 @@ body {
 
 .input {
   font-family: "Times New Roman", Georgia, Serif;
-  border-radius: 5px;
   padding: 2px;
-  height: 25px;
+  height: 23px;
   font-size: 16px;
   text-decoration: none;
-  border: solid 1px #4CAF50;
   display: inline-block;
-}
-
-.creator-forms {
-  text-align: center;
 }
 
 .creator-input-fields {
@@ -64,24 +56,21 @@ body {
 }
 
 .team-name {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
+  background-color: #4CAF50;
+  color: #fff;
 }
 
 .team-listing {
   margin: 5px 5px 5px 5px;
-  border-radius: 5px;
-  border: solid 1px #4CAF50;
   display: inline-block;
   vertical-align: top;
   min-height: 150px;
   min-width: 150px;
-  padding: 5px;
+  padding: 0;
 }
 
 .team-listing--deactivated {
-  background-color: #fff;
+  background-color: #C8E8CF;
 }
 
 .team-listing--activated {
