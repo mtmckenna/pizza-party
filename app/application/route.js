@@ -30,13 +30,20 @@ export default Ember.Route.extend({
     },
 
     deleteTeam(team) {
+      var store = this.store;
       var removeEngineersFromTeam = team.get('engineers').map(function(engineer) {
         engineer.set('team', null);
-        return engineer.save();
+
+        // This really uhdsufhk piece of code is to handle an error that comes up because of Emberfire, I think...
+        return engineer.save().then(function(engineer) {
+          var id = engineer.get('id');
+          engineer.unloadRecord();
+          return store.findRecord('engineer', id);
+        });
       });
 
       Ember.RSVP.all(removeEngineersFromTeam).then(function() {
-        return team.destroyRecord();
+        team.destroyRecord();
       });
     }
   }
