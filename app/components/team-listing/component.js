@@ -19,15 +19,5 @@ export default Ember.Component.extend({
     var data = event.dataTransfer.getData('text/data');
     this.attrs.moveEngineer(data, this.get('team'));
     this.set('dragClass', 'team-listing--deactivated');
-  },
-
-  actions: {
-    deleteTeam: function() {
-      this.attrs.deleteTeam(this.get('team'));
-    },
-
-    deleteEngineer: function(engineer) {
-      this.attrs.deleteEngineer(engineer);
-    }
   }
 });

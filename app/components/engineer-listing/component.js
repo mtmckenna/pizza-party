@@ -8,11 +8,5 @@ export default Ember.Component.extend({
   dragStart(event) {
     var engineerId = this.get('engineer').get('id');
     return event.dataTransfer.setData('text/data', engineerId);
-  },
-
-  actions: {
-    deleteEngineer: function() {
-      this.attrs.deleteEngineer(this.get('engineer'));
-    }
   }
 });

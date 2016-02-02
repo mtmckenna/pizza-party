@@ -7,8 +7,9 @@ moduleForComponent('engineer-listing', 'Integration | Component | engineer listi
 
 test('it renders', function(assert) {
   this.set('engineer', { name: 'Zevon' });
+  this.set('deleteEngineer', function() {});
 
-  this.render(hbs`{{engineer-listing engineer=engineer}}`);
+  this.render(hbs`{{engineer-listing engineer=engineer deleteEngineer=deleteEngineer}}`);
 
   assert.equal(this.$().text().trim().indexOf('Zevon') > -1, true);
 });

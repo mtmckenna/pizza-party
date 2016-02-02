@@ -6,11 +6,12 @@ moduleForComponent('team-listing', 'Integration | Component | team listing', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
-
   this.set('team', {name: 'Bulls'});
-  this.render(hbs`{{team-listing team=team}}`);
+  this.set('deleteEngineer', function() {});
+  this.set('moveEngineer', function() {});
+  this.set('deleteTeam', function() {});
+
+  this.render(hbs`{{team-listing team=team deleteEngineer=deleteEngineer moveEngineer=moveEngineer deleteTeam=deleteTeam}}`);
 
   assert.equal(this.$().text().trim().indexOf('Bulls') > -1, true);
 });

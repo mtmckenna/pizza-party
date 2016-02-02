@@ -6,7 +6,9 @@ moduleForComponent('team-creator', 'Integration | Component | team creator', {
 });
 
 test('it renders', function(assert) {
-  this.render(hbs`{{team-creator}}`);
+  this.set('createTeam', function() {});
+
+  this.render(hbs`{{team-creator createTeam=createTeam}}`);
 
   assert.equal(this.$().text().trim(), 'Add team');
 });
