@@ -104,6 +104,17 @@ body {
   margin-top: 5px;
 }
 
+.engineer-listing:hover {
+  background-color: #ffcc99;
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+.engineer-listing:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .engineer-listing-li {
   list-style-type: none;
   padding: 0;
