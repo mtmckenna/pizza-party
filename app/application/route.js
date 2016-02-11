@@ -45,6 +45,27 @@ export default Ember.Route.extend({
       Ember.RSVP.all(removeEngineersFromTeam).then(function() {
         team.destroyRecord();
       });
+    },
+
+    moveTeam(orderedTeams, team, direction) {
+      var otherTeam;
+      var otherTeamIndex;
+      var currentIndex = orderedTeams.indexOf(team);
+
+      if (direction === 'back') {
+        if (orderedTeams.get('firstObject') === team) { return; }
+        otherTeamIndex = currentIndex - 1;
+      } else if (direction === 'forward') {
+        if (orderedTeams.get('lastObject') === team) { return; }
+        otherTeamIndex = currentIndex + 1;
+      }
+
+      otherTeam = orderedTeams.objectAt(otherTeamIndex);
+      otherTeam.set('order', currentIndex);
+      otherTeam.save();
+
+      team.set('order', otherTeamIndex);
+      team.save();
     }
   }
 });

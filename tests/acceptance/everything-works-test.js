@@ -39,6 +39,33 @@ test('can create and delete teams and engineers', function(assert) {
   });
 });
 
+test('teams are ordered and can be reordered', function(assert) {
+  server.createList('team', 3);
+  var team1 = server.db.teams[0];
+  var team2 = server.db.teams[1];
+  var team3 = server.db.teams[2];
+
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+    assert.equal(find('.js-team').length, 4);
+
+    assert.equal($('.team-name').eq(0).text().indexOf(team1.name) > -1, true);
+    assert.equal($('.team-name').eq(1).text().indexOf(team2.name) > -1, true);
+    assert.equal($('.team-name').eq(2).text().indexOf(team3.name) > -1, true);
+
+    click(find('.js-move-team-forward').eq(0));
+    click(find('.js-move-team-back').eq(2));
+
+    andThen(function() {
+      assert.equal($('.team-name').eq(0).text().indexOf(team2.name) > -1, true);
+      assert.equal($('.team-name').eq(1).text().indexOf(team3.name) > -1, true);
+      assert.equal($('.team-name').eq(2).text().indexOf(team1.name) > -1, true);
+    });
+  });
+});
+
 test('can move engineers between teams', function(assert) {
   server.createList('engineer', 2);
   server.createList('team', 2);

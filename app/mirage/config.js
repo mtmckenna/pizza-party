@@ -20,6 +20,19 @@ export default function() {
     };
   });
 
+  this.patch('/teams/:id', function(db, request) {
+    var data = JSON.parse(request.requestBody).data;
+    var team = db.teams.update(data.id, data);
+
+    return {
+      data: {
+        type: 'teams',
+        id: team.id,
+        attributes: data.attributes
+      }
+    };
+  });
+
   this.delete('/teams/:id', {data: null});
 
   this.get('/engineers', function(db) {

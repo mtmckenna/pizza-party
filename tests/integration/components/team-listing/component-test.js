@@ -10,8 +10,9 @@ test('it renders', function(assert) {
   this.set('deleteEngineer', function() {});
   this.set('moveEngineer', function() {});
   this.set('deleteTeam', function() {});
+  this.set('moveTeam', function() {});
 
-  this.render(hbs`{{team-listing team=team deleteEngineer=deleteEngineer moveEngineer=moveEngineer deleteTeam=deleteTeam}}`);
+  this.render(hbs`{{team-listing team=team deleteEngineer=deleteEngineer moveEngineer=moveEngineer deleteTeam=deleteTeam moveTeam=moveTeam}}`);
 
   assert.equal(this.$().text().trim().indexOf('Bulls') > -1, true);
 });

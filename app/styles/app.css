@@ -86,6 +86,10 @@ body {
   padding: 0;
 }
 
+.team-carets {
+  float: right;
+}
+
 .unassignedengineer-list {
   padding: 5px;
 }

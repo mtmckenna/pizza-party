@@ -2,8 +2,9 @@
 {{team-creator createTeam=(route-action "createTeam")}}
 
 <ul class="team-list">
-  {{#each model.teams as |team|}}
+  {{#each orderedTeams as |team|}}
     {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
+                              moveTeam=(route-action "moveTeam" orderedTeams)
                               moveEngineer=(route-action "moveEngineer")
                               deleteEngineer=(route-action "deleteEngineer")}}
   {{/each}}
