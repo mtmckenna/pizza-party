@@ -6,5 +6,13 @@ const Validations = buildValidations({
 });
 
 export default Ember.Component.extend(Validations, {
-  classNames: ['creator-input-fields']
+  classNames: ['creator-input-fields'],
+
+  actions: {
+    save: function(name) {
+      this.get('createEngineer')(name).then(() => {
+        this.set('name', '');
+      });
+    }
+  }
 });

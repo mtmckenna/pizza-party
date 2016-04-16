@@ -13,10 +13,13 @@ test('can create and delete teams and engineers', function(assert) {
 
     assert.equal(find('.js-create-engineer-button:disabled').length, 1);
     assert.equal(find('.js-create-team-button:disabled').length, 1);
+    assert.equal(find('.js-create-team-input')[0].value, '');
+    assert.equal(find('.js-create-engineer-input')[0].value, '');
 
     andThen(function() {
       fillIn(find('.js-create-team-input'), 'Bulls');
       click(find('.js-create-team-button'));
+      console.log(find('.js-create-team-input').text());
 
       fillIn(find('.js-create-team-input'), 'Bears');
       click(find('.js-create-team-button'));
@@ -28,6 +31,8 @@ test('can create and delete teams and engineers', function(assert) {
       click(find('.js-create-engineer-button'));
 
       andThen(function() {
+        assert.equal(find('.js-create-team-input')[0].value, '');
+        assert.equal(find('.js-create-engineer-input')[0].value, '');
         assert.equal(find('.js-team').length, 3);
         assert.equal(find('.js-engineer').length, 2);
         click(find('.js-delete-team'));

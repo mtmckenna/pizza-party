@@ -1,4 +1,4 @@
 <form>
   {{input class='js-create-team-input input' placeholder='Team name' value=name}}
-  <button class='js-create-team-button button button__green' {{action (action attrs.createTeam name)}} disabled={{validations.isInvalid}}>Add team</button>
+  <button class='js-create-team-button button button__green' {{action 'save' name}} disabled={{validations.isInvalid}}>Add team</button>
 </form>

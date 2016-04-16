@@ -11,7 +11,7 @@ export default Ember.Route.extend({
   actions: {
     createEngineer(name) {
       var newEngineer = this.store.createRecord('engineer', { name: name });
-      newEngineer.save();
+      return newEngineer.save();
     },
 
     deleteEngineer(engineer) {
@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 
     createTeam(name) {
       var newTeam = this.store.createRecord('team', { name: name });
-      newTeam.save();
+      return newTeam.save();
     },
 
     deleteTeam(team) {
