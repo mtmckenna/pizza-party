@@ -1,7 +1,7 @@
 <li class="team-listing-li">
   <div class="team-name">
     {{#if team.name}}
-      <button class='js-delete-team button__x' {{action (action attrs.deleteTeam team)}}>&#215;</button> {{team.name}}
+      <button class='js-delete-team button__x' {{action (action attrs.deleteTeam team)}}>&#215;</button> {{team.name}} ({{team.engineers.length}})
       <div class="team-carets">
         <span class="js-move-team-back" {{action (action attrs.moveTeam team 'back')}}>{{fa-icon "caret-left"}}</span>
         <span class="js-move-team-forward" {{action (action attrs.moveTeam team 'forward')}}>{{fa-icon "caret-right"}}</span>
