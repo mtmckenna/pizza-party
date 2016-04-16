@@ -11,6 +11,9 @@ test('can create and delete teams and engineers', function(assert) {
     assert.equal(find('.js-team').length, 1);
     assert.equal(find('.js-engineer').length, 0);
 
+    assert.equal(find('.js-create-engineer-button:disabled').length, 1);
+    assert.equal(find('.js-create-team-button:disabled').length, 1);
+
     andThen(function() {
       fillIn(find('.js-create-team-input'), 'Bulls');
       click(find('.js-create-team-button'));
@@ -34,6 +37,26 @@ test('can create and delete teams and engineers', function(assert) {
           assert.equal(find('.js-team').length, 1);
           assert.equal(find('.js-engineer').length, 0);
         });
+      });
+    });
+  });
+});
+
+test('cannot create blank engineers or teams', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+    assert.equal(find('.js-create-engineer-button:disabled').length, 1);
+    assert.equal(find('.js-create-team-button:disabled').length, 1);
+
+    andThen(function() {
+      fillIn(find('.js-create-team-input'), 'Bulls');
+      fillIn(find('.js-create-engineer-input'), 'Zevon');
+
+      andThen(function() {
+        assert.equal(find('.js-create-engineer-button:disabled').length, 0);
+        assert.equal(find('.js-create-team-button:disabled').length, 0);
       });
     });
   });

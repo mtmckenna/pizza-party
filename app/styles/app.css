@@ -41,6 +41,10 @@ body {
   background-color: #4CAF50;
 }
 
+.button__green:disabled {
+  background-color: #83b995;
+}
+
 .input {
   font-family: "Times New Roman", Georgia, Serif;
   padding: 2px;
