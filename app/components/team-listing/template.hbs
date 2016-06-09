@@ -7,7 +7,7 @@
         <span class="js-move-team-forward" {{action (action attrs.moveTeam team 'forward')}}>{{fa-icon "caret-right"}}</span>
       </div>
     {{else}}
-      Free Agentz
+    Free Agentz ({{team.engineers.length}})
     {{/if}}
   </div>
   <ul class="engineer-list">

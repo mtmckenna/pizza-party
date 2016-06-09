@@ -28,3 +28,15 @@ test('it lists the number of engineers', function(assert) {
 
   assert.equal(this.$().text().trim().indexOf('(3)') > -1, true);
 });
+
+test('it lists the number of free agentz', function(assert) {
+  this.set('team', {engineers: [{name: 'Jordan'}, {name: 'Pippen'}, {name: 'Kukoc'}]});
+  this.set('deleteEngineer', function() {});
+  this.set('moveEngineer', function() {});
+  this.set('deleteTeam', function() {});
+  this.set('moveTeam', function() {});
+
+  this.render(hbs`{{team-listing team=team deleteEngineer=deleteEngineer moveEngineer=moveEngineer deleteTeam=deleteTeam moveTeam=moveTeam}}`);
+
+  assert.equal(this.$().text().trim().indexOf('(3)') > -1, true);
+});
