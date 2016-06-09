@@ -59,6 +59,13 @@ body {
   display: inline-block;
 }
 
+.headcount {
+  background-color: #4CAF50;
+  color: #fff;
+  height: 23px;
+  padding: 5px;
+}
+
 .team-name {
   background-color: #4CAF50;
   color: #fff;

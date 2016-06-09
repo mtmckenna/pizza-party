@@ -10,6 +10,7 @@ test('can create and delete teams and engineers', function(assert) {
     assert.equal(currentURL(), '/');
     assert.equal(find('.js-team').length, 1);
     assert.equal(find('.js-engineer').length, 0);
+    assert.equal($('body').text().indexOf('Headcount: 0') > 0, true);
 
     assert.equal(find('.js-create-engineer-button:disabled').length, 1);
     assert.equal(find('.js-create-team-button:disabled').length, 1);
@@ -34,12 +35,14 @@ test('can create and delete teams and engineers', function(assert) {
         assert.equal(find('.js-create-engineer-input')[0].value, '');
         assert.equal(find('.js-team').length, 3);
         assert.equal(find('.js-engineer').length, 2);
+        assert.equal($('body').text().indexOf('Headcount: 2') > 0, true);
         click(find('.js-delete-team'));
         click(find('.js-delete-engineer'));
 
         andThen(function() {
           assert.equal(find('.js-team').length, 1);
           assert.equal(find('.js-engineer').length, 0);
+          assert.equal($('body').text().indexOf('Headcount: 0') > 0, true);
         });
       });
     });

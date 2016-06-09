@@ -1,6 +1,8 @@
 {{engineer-creator createEngineer=(route-action "createEngineer")}}
 {{team-creator createTeam=(route-action "createTeam")}}
 
+<span class="headcount">Headcount: {{model.engineers.length}}</span>
+
 <ul class="team-list">
   {{#each orderedTeams as |team|}}
     {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
