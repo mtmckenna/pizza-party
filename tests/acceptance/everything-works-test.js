@@ -19,7 +19,6 @@ test('can create and delete teams and engineers', function(assert) {
     andThen(function() {
       fillIn(find('.js-create-team-input'), 'Bulls');
       click(find('.js-create-team-button'));
-      console.log(find('.js-create-team-input').text());
 
       fillIn(find('.js-create-team-input'), 'Bears');
       click(find('.js-create-team-button'));
