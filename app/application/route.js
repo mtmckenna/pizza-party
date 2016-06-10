@@ -5,6 +5,8 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       teams: this.store.findAll('team'),
       engineers: this.store.findAll('engineer')
+    }).then((object) => {
+      return Ember.Object.create(object);
     });
   },
 

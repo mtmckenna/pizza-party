@@ -10,7 +10,6 @@ test('can create and delete teams and engineers', function(assert) {
     assert.equal(currentURL(), '/');
     assert.equal(find('.js-team').length, 1);
     assert.equal(find('.js-engineer').length, 0);
-    assert.equal($('body').text().indexOf('Headcount: 0') > 0, true);
 
     assert.equal(find('.js-create-engineer-button:disabled').length, 1);
     assert.equal(find('.js-create-team-button:disabled').length, 1);
@@ -35,14 +34,12 @@ test('can create and delete teams and engineers', function(assert) {
         assert.equal(find('.js-create-engineer-input')[0].value, '');
         assert.equal(find('.js-team').length, 3);
         assert.equal(find('.js-engineer').length, 2);
-        assert.equal($('body').text().indexOf('Headcount: 2') > 0, true);
         click(find('.js-delete-team'));
         click(find('.js-delete-engineer'));
 
         andThen(function() {
           assert.equal(find('.js-team').length, 1);
           assert.equal(find('.js-engineer').length, 0);
-          assert.equal($('body').text().indexOf('Headcount: 0') > 0, true);
         });
       });
     });
@@ -118,6 +115,7 @@ test('can move engineers between teams', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/');
+    assert.equal($('body').text().indexOf('Headcount: 0') > -1, true);
     assert.equal(find('.js-team').length, 3);
     assert.equal(find('.js-engineer').length, 2);
 
@@ -141,6 +139,7 @@ test('can move engineers between teams', function(assert) {
       var engineersOnFirstTeam = $(team1).text().trim();
       var engineersOnSecondTeam = $(team2).text().trim();
       freeAgents = $('.js-team').eq(2).text().trim();
+      assert.equal($('body').text().indexOf('Headcount: 2') > -1, true);
 
       // Engineer1 is on team1
       assert.equal(engineersOnFirstTeam.indexOf(engineer1.name) > -1, true);
