@@ -34,8 +34,14 @@ test('can create and delete teams and engineers', function(assert) {
         assert.equal(find('.js-create-engineer-input')[0].value, '');
         assert.equal(find('.js-team').length, 3);
         assert.equal(find('.js-engineer').length, 2);
-        click(find('.js-delete-team'));
-        click(find('.js-delete-engineer'));
+
+        find('.js-delete-team').each((index, button) => {
+          click(button);
+        });
+
+        find('.js-delete-engineer').each((index, button) => {
+          click(button);
+        });
 
         andThen(function() {
           assert.equal(find('.js-team').length, 1);

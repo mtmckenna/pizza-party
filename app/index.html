@@ -9,16 +9,16 @@
 
     {{content-for "head"}}
 
-    <link integrity="" rel="stylesheet" href="assets/vendor.css">
-    <link integrity="" rel="stylesheet" href="assets/pizza-party.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/pizza-party.css">
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
 
-    <script integrity="" src="assets/vendor.js"></script>
-    <script integrity="" src="assets/pizza-party.js"></script>
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/pizza-party.js"></script>
 
     {{content-for "body-footer"}}
   </body>

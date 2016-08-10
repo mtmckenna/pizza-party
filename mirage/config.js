@@ -1,5 +1,5 @@
 export default function() {
-  this.get('/teams', function(db) {
+  this.get('/teams', function({db}) {
     return {
       data: db.teams.map(attrs => (
         {type: 'teams', id: attrs.id, attributes: attrs }
@@ -7,7 +7,7 @@ export default function() {
     };
   });
 
-  this.post('/teams', function(db, request) {
+  this.post('/teams', function({db}, request) {
     var attrs = JSON.parse(request.requestBody).data.attributes;
     var team = db.teams.insert(attrs);
 
@@ -20,7 +20,7 @@ export default function() {
     };
   });
 
-  this.patch('/teams/:id', function(db, request) {
+  this.patch('/teams/:id', function({db}, request) {
     var data = JSON.parse(request.requestBody).data;
     var team = db.teams.update(data.id, data);
 
@@ -35,7 +35,7 @@ export default function() {
 
   this.delete('/teams/:id', {data: null});
 
-  this.get('/engineers', function(db) {
+  this.get('/engineers', function({db}) {
     return {
       data: db.engineers.map(attrs => (
         {type: 'engineers', id: attrs.id, attributes: attrs }
@@ -43,7 +43,7 @@ export default function() {
     };
   });
 
-  this.post('/engineers', function(db, request) {
+  this.post('/engineers', function({db}, request) {
     var attrs = JSON.parse(request.requestBody).data.attributes;
     var engineer = db.engineers.insert(attrs);
 
@@ -56,7 +56,7 @@ export default function() {
     };
   });
 
-  this.patch('/engineers/:id', function(db, request) {
+  this.patch('/engineers/:id', function({db}, request) {
     var data = JSON.parse(request.requestBody).data;
     var engineer = db.engineers.update(data.id, data);
 
