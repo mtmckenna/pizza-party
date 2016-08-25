@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('engineer', 'Unit | Model | engineer', {
   // Specify the other units that are required for this test.
-  needs: ['model:team']
+  needs: ['model:team', 'model:time-slice']
 });
 
 test('it exists', function(assert) {

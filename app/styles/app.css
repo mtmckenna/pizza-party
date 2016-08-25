@@ -6,6 +6,8 @@ body {
   background-color: #ffffcc;
   font-family: "Times New Roman", Georgia, Serif;
   color: #000;
+  margin: 0;
+  padding: 0;
 }
 
 .title {
@@ -55,7 +57,6 @@ body {
 }
 
 .creator-input-fields {
-  margin: 0 20px 0 5px;
   display: inline-block;
 }
 
@@ -72,11 +73,10 @@ body {
 }
 
 .team-listing {
-  margin: 5px 5px 5px 5px;
   display: inline-block;
   vertical-align: top;
-  min-height: 150px;
   min-width: 150px;
+  height: 100%;
   padding: 0;
 }
 
@@ -95,6 +95,7 @@ body {
 .team-list {
   list-style-type: none;
   padding: 0;
+  min-height: 150px;
 }
 
 .team-carets {
@@ -133,4 +134,9 @@ body {
 .engineer-listing-li {
   list-style-type: none;
   padding: 0;
+}
+
+.time-slice {
+  border-style: solid;
+  border-width: 1px;
 }

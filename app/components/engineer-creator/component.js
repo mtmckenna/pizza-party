@@ -9,8 +9,10 @@ export default Ember.Component.extend(Validations, {
   classNames: ['creator-input-fields'],
 
   actions: {
-    save: function(name) {
-      this.get('createEngineer')(name).then(() => {
+    save: function() {
+      var name = this.get('name');
+      var timeSlice = this.get('timeSlice');
+      this.get('createEngineer')(name, timeSlice).then(() => {
         this.set('name', '');
       });
     }

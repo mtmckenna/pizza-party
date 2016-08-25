@@ -1,18 +1,36 @@
 import Ember from 'ember';
+import TimeSliceCloner from '../service-objects/time-slice-cloner';
 
 export default Ember.Route.extend({
   model: function() {
-    return Ember.RSVP.hash({
-      teams: this.store.findAll('team'),
-      engineers: this.store.findAll('engineer')
-    }).then((object) => {
-      return Ember.Object.create(object);
+    return this.store.findAll('timeSlice').then((timeSlices) => {
+      return this.createNowTimeSlice(timeSlices);
     });
   },
 
+  afterModel: function() {
+    this.store.findAll('team').then(() => {
+      this.store.findAll('engineer');
+    });
+  },
+
+  createNowTimeSlice(timeSlices) {
+    if (!timeSlices.get('length')) {
+      var timeSlice = this.store.createRecord('timeSlice', { name: 'Now' });
+      timeSlice.save();
+      timeSlices = this.store.peekAll('timeSlice');
+    }
+
+    return timeSlices;
+  },
+
   actions: {
-    createEngineer(name) {
-      var newEngineer = this.store.createRecord('engineer', { name: name });
+    copyTimeSlice(timeSlice) {
+      new TimeSliceCloner(timeSlice, this.store).saveClonedCopy();
+    },
+
+    createEngineer(name, timeSlice) {
+      var newEngineer = this.store.createRecord('engineer', { name: name, timeSlice: timeSlice });
       return newEngineer.save();
     },
 
@@ -26,8 +44,8 @@ export default Ember.Route.extend({
       engineer.save();
     },
 
-    createTeam(name) {
-      var newTeam = this.store.createRecord('team', { name: name });
+    createTeam(name, timeSlice) {
+      var newTeam = this.store.createRecord('team', { name: name, timeSlice: timeSlice });
       return newTeam.save();
     },
 

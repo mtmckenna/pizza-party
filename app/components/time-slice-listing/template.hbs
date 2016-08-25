@@ -1,0 +1,22 @@
+<button class='js-delete-time-slice button__x'>&#215;</button>
+{{input value=timeSlice.name class="input"}}
+<span class="headcount">Headcount: {{headCount}}</span>
+{{fa-icon "copy" click=(route-action "copyTimeSlice" timeSlice)}}
+
+<p>
+{{engineer-creator timeSlice=timeSlice createEngineer=(route-action "createEngineer")}}
+{{team-creator timeSlice=timeSlice createTeam=(route-action "createTeam")}}
+</p>
+
+<ul class="team-list">
+  {{#each orderedTeams as |team|}}
+    {{team-listing team=team  deleteTeam=(route-action "deleteTeam")
+                              moveTeam=(route-action "moveTeam" orderedTeams)
+                              moveEngineer=(route-action "moveEngineer")
+                              deleteEngineer=(route-action "deleteEngineer")}}
+  {{/each}}
+
+  {{team-listing team=freeAgents moveEngineer=(route-action "moveEngineer")
+                                 deleteEngineer=(route-action "deleteEngineer")}}
+</ul>
+

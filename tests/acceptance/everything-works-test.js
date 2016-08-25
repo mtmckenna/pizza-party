@@ -73,7 +73,8 @@ test('cannot create blank engineers or teams', function(assert) {
 });
 
 test('teams are ordered and can be reordered', function(assert) {
-  server.createList('team', 3);
+  let timeSlice = server.create('timeSlice');
+  server.createList('team', 3, { timeSlice });
   var team1 = server.db.teams[0];
   var team2 = server.db.teams[1];
   var team3 = server.db.teams[2];
